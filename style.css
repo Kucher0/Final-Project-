@@ -90,7 +90,7 @@ body {
   color: var(--text-success);
 }
 
-/* === ВИПРАВЛЕНО: КРУГЛА КНОПКА KEYCAP === */
+/* КРУГЛА КНОПКА KEYCAP */
 .keycap {
   --keycap-size: 180px;
 
@@ -101,7 +101,7 @@ body {
     var(--keycap-gradient-start),
     var(--keycap-gradient-end)
   );
-  **border-radius: 50%;** /* Робить кнопку ідеально круглою */
+  border-radius: 50%; /* Робить кнопку ідеально круглою */
   border: 2px solid var(--keycap-border);
   box-shadow: 0 8px 0 var(--keycap-border), 0 10px 15px rgba(0, 0, 0, 0.4);
   display: flex;
@@ -182,7 +182,7 @@ body {
   border-radius: var(--border-radius-sm);
   font-size: 0.9em;
   cursor: pointer;
-  **transition: background-color 0.2s, box-shadow 0.2s;** /* Додано перехід для плавного підсвічування */
+  transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .upgrade button:hover {
@@ -195,7 +195,7 @@ body {
   cursor: not-allowed;
 }
 
-/* === НОВИЙ СТИЛЬ: ЗЕЛЕНЕ ПІДСВІЧУВАННЯ ПРИ УСПІШНІЙ ПОКУПЦІ === */
+/* ЗЕЛЕНЕ ПІДСВІЧУВАННЯ ПРИ УСПІШНІЙ ПОКУПЦІ */
 .upgrade button.purchased-success {
     background-color: #4CAF50 !important; /* Насичений зелений */
     color: white !important;
