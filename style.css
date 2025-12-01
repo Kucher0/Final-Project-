@@ -16,7 +16,7 @@
 
   /* Кнопка keycap (Червона) */
   --keycap-gradient-start: #a00000; /* Темно-червоний */
-  --keycap-gradient-end: #800000;   /* Глибокий червоний */
+  --keycap-gradient-end: #800000;   
   --keycap-border: #440000;
 
   /* Інтерфейс */
@@ -292,3 +292,4 @@ body {
 .hidden {
   display: none !important;
 }
+
