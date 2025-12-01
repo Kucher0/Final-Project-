@@ -1,65 +1,34 @@
 :root {
-
   /* Кольорова палітра */
-
   --bg-primary: #0a192f;        /* Глибокий Темно-синій */
-
   --bg-secondary: #1f344d;      /* Темно-синій фон панелей */
-
   --text-primary: #f0f0f0;      /* Білий/Світлий текст */
-
   --text-accent: #FF0000;       /* Червоний Акцент (Основний) */
-
   --text-success: #F06292;      /* Яскравий Рожевий (Рахунок, LPS) */
-
   --text-highlight: #F06292;    /* Яскравий Рожевий (Спливаючий текст) */
-
   --text-heading: #6495ED;      /* Синій (Заголовки) */
 
-
-
   /* Кнопки */
-
-  --btn-bg: #6495ED;            
-
-  --btn-bg-hover: #80a5f5;      
-
+  --btn-bg: #6495ED;            /* Синій (Фон кнопок) */
+  --btn-bg-hover: #80a5f5;      /* Світліший Синій */
   --btn-disabled: #333;
-
   --btn-text-disabled: #666;
 
-
-
   /* Кнопка keycap (Червона) */
-
   --keycap-gradient-start: #a00000; /* Темно-червоний */
-
   --keycap-gradient-end: #800000;   /* Глибокий червоний */
-
   --keycap-border: #440000;
 
-
-
   /* Інтерфейс */
-
   --border-color: #6495ED;      /* Сині межі */
-
   --upgrade-accent: #FF0000;    /* Червона смуга оновлень */
 
-
-
   /* Розміри */
-
   --container-padding: 20px;
-
   --border-radius-sm: 4px;
-
   --border-radius-md: 5px;
-
   --border-radius-lg: 8px;
-
   --border-radius-xl: 15px;
-
 }
 
 
@@ -577,3 +546,4 @@ body {
   display: none !important;
 
 }
+
