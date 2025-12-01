@@ -10,8 +10,8 @@
   --text-heading: #6495ED;      /* Синій (Заголовки) */
 
   /* Кнопки */
-  --btn-bg: #6495ED;            /* Синій (Фон кнопок) */
-  --btn-bg-hover: #80a5f5;      /* Світліший Синій */
+  --btn-bg: #6495ED;            
+  --btn-bg-hover: #80a5f5;      
   --btn-disabled: #333;
   --btn-text-disabled: #666;
 
@@ -289,3 +289,4 @@ body {
 .hidden {
   display: none !important;
 }
+
