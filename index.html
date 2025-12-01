@@ -1,115 +1,112 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RocketClicker - Incremental game about calming the nerves">
-    <meta name="theme-color" content="#1e1e1e">
-    
-    <title>RocketClicker</title>
-    
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RocketClicker - Інкрементальна гра про запуск ракет">     <meta name="theme-color" content="#1e1e1e">
+    
+    <title>RocketClicker</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="modal-overlay" class="hidden">
-        <div class="modal">
-            <h3>Скинути прогрес?</h3>
-            <p>Якщо ви нажмете на цю кнопочку, рашка відновиться. Впевнені що хочете цього ?.</p>
-            <div class="modal-buttons">
-                <button id="reset-confirm" class="danger-btn">Скинути</button>
-                <button id="reset-cancel">Скасувати</button>
-            </div>
-        </div>
-    </div>
+    <div id="modal-overlay" class="hidden">
+        <div class="modal">
+            <h3>Скинути прогрес?</h3>
+            <p>Якщо ви нажмете на цю кнопочку, рашка відновиться. Впевнені що хочете цього ?.</p>
+            <div class="modal-buttons">
+                <button id="reset-confirm" class="danger-btn">Скинути</button>
+                <button id="reset-cancel">Скасувати</button>
+            </div>
+        </div>
+    </div>
 
-    <main id="game-container">
-        <aside id="info-panel">
-            <h1>RocketClicker</h1>
-            <section id="score-container" aria-live="polite">
-                <p>Запущені ракети в нашого ворога:</p>
-                <output id="score">0</output>
-            </section>
-            <section id="lps-container" aria-live="polite">
-                <p>Ракети в секунду:</p>
-                <output id="lps">0</output>
-            </section>
-        </aside>
+    <main id="game-container">
+        <aside id="info-panel">
+            <h1>RocketClicker</h1>
+            <section id="score-container" aria-live="polite">
+                <p>Запущені ракети в нашого ворога:</p>
+                <output id="score">0</output>
+            </section>
+            <section id="lps-container" aria-live="polite">
+                <p>Ракети в секунду:</p>
+                <output id="lps">0</output>
+            </section>
+        </aside>
 
-        <section id="clicker-panel">
-            <button id="click-button" class="keycap">
-                <span>ПУСК</span>
-            </button>
-            <div id="floating-text-container" aria-hidden="true"></div>
-        </section>
+        <section id="clicker-panel">
+            <button id="click-button" class="keycap">
+                <span>ПУСК</span>
+            </button>
+            <div id="floating-text-container" aria-hidden="true"></div>
+        </section>
 
-        <aside id="store-panel">
-            <h2>Магазин</h2>
-            
-            <section class="upgrade" id="upgrade-click-power">
-                <div class="upgrade-info">
-                    <h3>Рефакторинг</h3>
-                    <p>+1 ракета за клік</p>
-                </div>
-                <button id="buy-click-power" aria-label="Купити покращення ">
-                    Ціна: <output id="click-power-cost">30</output> Ракет
-                </button>
-            </section>
+        <aside id="store-panel">
+            <h2>Магазин</h2>
+            
+            <section class="upgrade" id="upgrade-click-power">
+                <div class="upgrade-info">
+                    <h3>Покращення боєголовки</h3>                     <p>+1 ракета за клік</p>
+                </div>
+                <button id="buy-click-power" aria-label="Купити покращення ">
+                    Ціна: <output id="click-power-cost">30</output> Ракет
+                </button>
+            </section>
 
-            <section class="upgrade" id="upgrade-art-dev">
-                <div class="upgrade-info">
-                    <h3>Найняти артилерійську установку</h3>
-                    <p>+1 ракета в секунду</p>
-                    <p>Найнято: <output id="art-dev-count">0</output></p>
-                </div>
-                <button id="buy-art-dev" aria-label="Найняти артилерійську установку">
-                    Ціна: <output id="art-dev-cost">150</output> Ракет
-                </button>
-            </section>
+            <section class="upgrade" id="upgrade-art-dev">
+                <div class="upgrade-info">
+                    <h3>Найняти артилерійську установку</h3>
+                    <p>+1 ракета в секунду</p>
+                    <p>Найнято: <output id="art-dev-count">0</output></p>
+                </div>
+                <button id="buy-art-dev" aria-label="Найняти артилерійську установку">
+                    Ціна: <output id="art-dev-cost">150</output> Ракет
+                </button>
+            </section>
 
-            <section class="upgrade" id="upgrade-rocket-dev">
-                <div class="upgrade-info">
-                    <h3>Найняти ракетну установку</h3>
-                    <p>+5 ракет в секунду</p>
-                    <p>Найнято: <output id="rocket-dev-count">0</output></p>
-                </div>
-                <button id="buy-rocket-dev" aria-label="Найняти ракетну установку">
-                    Ціна: <output id="rocket-dev-cost">600</output> Ракет
-                </button>
-            </section>
+            <section class="upgrade" id="upgrade-rocket-dev">
+                <div class="upgrade-info">
+                    <h3>Найняти ракетну установку</h3>
+                    <p>+5 ракет в секунду</p>
+                    <p>Найнято: <output id="rocket-dev-count">0</output></p>
+                </div>
+                <button id="buy-rocket-dev" aria-label="Найняти ракетну установку">
+                    Ціна: <output id="rocket-dev-cost">600</output> Ракет
+                </button>
+            </section>
 
-            <section class="upgrade" id="upgrade-boat-dev">
-                <div class="upgrade-info">
-                    <h3>Найняти ракетоносець</h3>
-                    <p>+20 ракет в секунду</p>
-                    <p>Найнято: <output id="boat-dev-count">0</output></p>
-                </div>
-                <button id="buy-boat-dev" aria-label="Найняти ракетоносець">
-                    Ціна: <output id="boat-dev-cost">2500</output> Ракет
-                </button>
-            </section>
+            <section class="upgrade" id="upgrade-boat-dev">
+                <div class="upgrade-info">
+                    <h3>Найняти ракетоносець</h3>
+                    <p>+20 ракет в секунду</p>
+                    <p>Найнято: <output id="boat-dev-count">0</output></p>
+                </div>
+                <button id="buy-boat-dev" aria-label="Найняти ракетоносець">
+                    Ціна: <output id="boat-dev-cost">2500</output> Ракет
+                </button>
+            </section>
 
-            <section class="upgrade" id="upgrade-plane-dev">
-                <div class="upgrade-info">
-                    <h3>Найняти літак з ракетами</h3>
-                    <p>+50 ракет в секунду</p>
-                    <p>Найнято: <output id="plane-dev-count">0</output></p>
-                </div>
-                <button id="buy-plane-dev" aria-label="Найняти літак з ракетами">
-                    Ціна: <output id="plane-dev-cost">5000</output> Ракет
-                </button>
-            </section>
-        </aside>
-    </main>
+            <section class="upgrade" id="upgrade-plane-dev">
+                <div class="upgrade-info">
+                    <h3>Найняти літак з ракетами</h3>
+                    <p>+50 ракет в секунду</p>
+                </div>
+                <button id="buy-plane-dev" aria-label="Найняти літак з ракетами">
+                    Ціна: <output id="plane-dev-cost">5000</output> Ракет
+                </button>
+            </section>
+        </aside>
+    </main>
 
-    <button id="reset-button" class="reset-button" aria-label="Скинути прогрес">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path fill="currentColor" d="M12 4c2.1 0 4.1.8 5.6 2.3 3.1 3.1 3.1 8.2 0 11.3-3.1 3.1-8.2 3.1-11.3 0-3.1-3.1-3.1-8.2 0-11.3C7.9 4.8 9.9 4 12 4m0-2C9.3 2 6.8 3 4.9 4.9c-3.9 3.9-3.9 10.2 0 14.1 2 2 4.5 2.9 7.1 2.9s5.1-1 7.1-2.9c3.9-3.9 3.9-10.2 0-14.1C17.2 3 14.7 2 12 2z"/>
-            <path fill="currentColor" d="M12 6v6l4.7 2.8.8-1.3-4-2.4V6z"/>
-        </svg>
-    </button>
-    <script src="script.js"></script>
+    <button id="reset-button" class="reset-button" aria-label="Скинути прогрес">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M12 4c2.1 0 4.1.8 5.6 2.3 3.1 3.1 3.1 8.2 0 11.3-3.1 3.1-8.2 3.1-11.3 0-3.1-3.1-3.1-8.2 0-11.3C7.9 4.8 9.9 4 12 4m0-2C9.3 2 6.8 3 4.9 4.9c-3.9 3.9-3.9 10.2 0 14.1 2 2 4.5 2.9 7.1 2.9s5.1-1 7.1-2.9c3.9-3.9 3.9-10.2 0-14.1C17.2 3 14.7 2 12 2z"/>
+            <path fill="currentColor" d="M12 6v6l4.7 2.8.8-1.3-4-2.4V6z"/>
+        </svg>
+    </button>
+    <script src="script.js"></script>
 </body>
 </html>
