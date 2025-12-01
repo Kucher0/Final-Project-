@@ -139,13 +139,26 @@ const ClickManager = {
 };
 
 const UpgradeManager = {
+    // НОВА ДОПОМІЖНА ФУНКЦІЯ: підсвічує кнопку
+    highlightButton(buttonElement) {
+        buttonElement.classList.add('purchased-success');
+        // Видаляємо клас через 300 мс, щоб створити ефект спалаху
+        setTimeout(() => {
+            buttonElement.classList.remove('purchased-success');
+        }, 300);
+    },
+
     buyClickPower() {
         if (gameState.score >= gameState.costs.clickPower) {
+            const button = UI.upgrades.clickPower.button; // Отримуємо елемент кнопки
+            
             gameState.score -= gameState.costs.clickPower;
             gameState.linesPerClick++;
             gameState.costs.clickPower = Math.ceil(
                 gameState.costs.clickPower * CONFIG.PRICE_MULTIPLIERS.CLICK_POWER
             );
+            
+            this.highlightButton(button); // <<< ВИКЛИК ПІДСВІЧУВАННЯ
             AudioManager.play("upgrade");
             UIManager.update();
         }
@@ -154,6 +167,14 @@ const UpgradeManager = {
     buyDeveloper(type) {
         // type може бути 'art', 'rocket', 'boat', 'plane'
         const cost = gameState.costs[`${type}Dev`];
+        
+        // Визначаємо елемент кнопки, який потрібно підсвітити
+        let buttonElement;
+        if (type === 'art') buttonElement = UI.upgrades.artDev.button;
+        else if (type === 'rocket') buttonElement = UI.upgrades.rocketDev.button;
+        else if (type === 'boat') buttonElement = UI.upgrades.boatDev.button;
+        else if (type === 'plane') buttonElement = UI.upgrades.planeDev.button;
+
         if (gameState.score >= cost) {
             gameState.score -= cost;
             gameState.developers[type]++;
@@ -162,6 +183,8 @@ const UpgradeManager = {
             gameState.costs[`${type}Dev`] = Math.ceil(
                 cost * CONFIG.PRICE_MULTIPLIERS[`${type.toUpperCase()}_DEV`]
             );
+            
+            this.highlightButton(buttonElement); // <<< ВИКЛИК ПІДСВІЧУВАННЯ
             AudioManager.play("upgrade");
             UIManager.update();
         }
@@ -171,7 +194,7 @@ const UpgradeManager = {
         UI.upgrades.clickPower.button.addEventListener("click", () =>
             this.buyClickPower()
         );
-        // ПРИВ'ЯЗКА НОВИХ КНОПОК
+        // ПРИВ'ЯЗКА КНОПОК
         UI.upgrades.artDev.button.addEventListener("click", () =>
             this.buyDeveloper("art")
         );
@@ -181,7 +204,7 @@ const UpgradeManager = {
         UI.upgrades.boatDev.button.addEventListener("click", () =>
             this.buyDeveloper("boat")
         );
-        UI.upgrades.planeDev.button.addEventListener("click", () => // НОВИЙ
+        UI.upgrades.planeDev.button.addEventListener("click", () => 
             this.buyDeveloper("plane")
         );
     },
@@ -198,13 +221,13 @@ const UIManager = {
         UI.upgrades.artDev.cost.textContent = gameState.costs.artDev;
         UI.upgrades.rocketDev.cost.textContent = gameState.costs.rocketDev;
         UI.upgrades.boatDev.cost.textContent = gameState.costs.boatDev;
-        UI.upgrades.planeDev.cost.textContent = gameState.costs.planeDev; // НОВИЙ
+        UI.upgrades.planeDev.cost.textContent = gameState.costs.planeDev; 
 
         // Оновлення кількості
         UI.upgrades.artDev.count.textContent = gameState.developers.art;
         UI.upgrades.rocketDev.count.textContent = gameState.developers.rocket;
         UI.upgrades.boatDev.count.textContent = gameState.developers.boat;
-        UI.upgrades.planeDev.count.textContent = gameState.developers.plane; // НОВИЙ
+        UI.upgrades.planeDev.count.textContent = gameState.developers.plane; 
         
         // Оновлення статусу кнопок (disabled)
         UI.upgrades.clickPower.button.disabled =
@@ -215,7 +238,7 @@ const UIManager = {
             gameState.score < gameState.costs.rocketDev;
         UI.upgrades.boatDev.button.disabled =
             gameState.score < gameState.costs.boatDev;
-        UI.upgrades.planeDev.button.disabled = // НОВИЙ
+        UI.upgrades.planeDev.button.disabled = 
             gameState.score < gameState.costs.planeDev;
     },
 };
@@ -249,7 +272,7 @@ const SaveManager = {
                 artDev: saved.costs?.artDev || CONFIG.INITIAL_COSTS.ART_DEV,
                 rocketDev: saved.costs?.rocketDev || CONFIG.INITIAL_COSTS.ROCKET_DEV,
                 boatDev: saved.costs?.boatDev || CONFIG.INITIAL_COSTS.BOAT_DEV,
-                planeDev: saved.costs?.planeDev || CONFIG.INITIAL_COSTS.PLANE_DEV, // НОВИЙ
+                planeDev: saved.costs?.planeDev || CONFIG.INITIAL_COSTS.PLANE_DEV,
             };
 
             // ОНОВЛЕННЯ ЗМІННИХ КІЛЬКОСТІ ПРИ ЗАВАНТАЖЕННІ
@@ -257,7 +280,7 @@ const SaveManager = {
                 art: saved.developers?.art || 0,
                 rocket: saved.developers?.rocket || 0,
                 boat: saved.developers?.boat || 0,
-                plane: saved.developers?.plane || 0, // НОВИЙ
+                plane: saved.developers?.plane || 0,
             };
         }
     },
@@ -278,13 +301,13 @@ const ResetManager = {
             artDev: CONFIG.INITIAL_COSTS.ART_DEV,
             rocketDev: CONFIG.INITIAL_COSTS.ROCKET_DEV,
             boatDev: CONFIG.INITIAL_COSTS.BOAT_DEV,
-            planeDev: CONFIG.INITIAL_COSTS.PLANE_DEV, // НОВИЙ
+            planeDev: CONFIG.INITIAL_COSTS.PLANE_DEV, 
         };
         gameState.developers = {
             art: 0,
             rocket: 0,
             boat: 0,
-            plane: 0, // НОВИЙ
+            plane: 0, 
         };
         
         localStorage.removeItem('codeClickerSave');
