@@ -18,7 +18,7 @@
     <div id="modal-overlay" class="hidden">
         <div class="modal">
             <h3>Скинути прогрес?</h3>
-            <p>Якщо ви продовжите, весь ваш прогрес буде втрачено. Це незворотна дія.</p>
+            <p>Якщо ви нажмете на цю кнопочку, рашка відновиться. Впевнені що хочете цього ?.</p>
             <div class="modal-buttons">
                 <button id="reset-confirm" class="danger-btn">Скинути</button>
                 <button id="reset-cancel">Скасувати</button>
@@ -30,18 +30,18 @@
         <aside id="info-panel">
             <h1>CodeClicker</h1>
             <section id="score-container" aria-live="polite">
-                <p>Рядки коду (LoC):</p>
+                <p>Запущені ракети в нашого ворога:</p>
                 <output id="score">0</output>
             </section>
             <section id="lps-container" aria-live="polite">
-                <p>LoC в секунду:</p>
+                <p>Ракети в секунду:</p>
                 <output id="lps">0</output>
             </section>
         </aside>
 
         <section id="clicker-panel">
             <button id="click-button" class="keycap">
-                <span>COMMIT</span>
+                <span>ПУСК</span>
             </button>
             <div id="floating-text-container" aria-hidden="true"></div>
         </section>
@@ -52,43 +52,54 @@
             <section class="upgrade" id="upgrade-click-power">
                 <div class="upgrade-info">
                     <h3>Рефакторинг</h3>
-                    <p>+1 LoC за клік</p>
+                    <p>+1 ракета за клік</p>
                 </div>
-                <button id="buy-click-power" aria-label="Купити покращення Рефакторинг">
-                    Ціна: <output id="click-power-cost">25</output> LoC
+                <button id="buy-click-power" aria-label="Купити покращення ">
+                    Ціна: <output id="click-power-cost">30</output> LoC
                 </button>
             </section>
 
-            <section class="upgrade" id="upgrade-junior-dev">
+            <section class="upgrade" id="upgrade-art-dev">
                 <div class="upgrade-info">
-                    <h3>Найняти Junior'а</h3>
-                    <p>+1 LoC в секунду</p>
-                    <p>Найнято: <output id="junior-dev-count">0</output></p>
+                    <h3>Найняти артилерійську установку</h3>
+                    <p>+1 ракета в секунду</p>
+                    <p>Найнято: <output id="art-dev-count">0</output></p>
                 </div>
-                <button id="buy-junior-dev" aria-label="Найняти Junior розробника">
-                    Ціна: <output id="junior-dev-cost">100</output> LoC
+                <button id="buy-art-dev" aria-label="Найняти артилерійську установку">
+                    Ціна: <output id="art-dev-cost">150</output> LoC
                 </button>
             </section>
 
-            <section class="upgrade" id="upgrade-middle-dev">
+            <section class="upgrade" id="upgrade-rocket-dev">
                 <div class="upgrade-info">
-                    <h3>Найняти Middle'a</h3>
-                    <p>+5 LoC в секунду</p>
-                    <p>Найнято: <output id="middle-dev-count">0</output></p>
+                    <h3>Найняти ракетну установку</h3>
+                    <p>+5 ракет в секунду</p>
+                    <p>Найнято: <output id="rocket-dev-count">0</output></p>
                 </div>
-                <button id="buy-middle-dev" aria-label="Найняти Middle розробника">
-                    Ціна: <output id="middle-dev-cost">500</output> LoC
+                <button id="buy-rocket-dev" aria-label="Найняти ракетну установку">
+                    Ціна: <output id="rocket-dev-cost">600</output> LoC
                 </button>
             </section>
 
-            <section class="upgrade" id="upgrade-senior-dev">
+            <section class="upgrade" id="upgrade-boat-dev">
                 <div class="upgrade-info">
-                    <h3>Найняти Senior'а</h3>
-                    <p>+20 LoC в секунду</p>
-                    <p>Найнято: <output id="senior-dev-count">0</output></p>
+                    <h3>Найняти ракетоносець</h3>
+                    <p>+20 ракет в секунду</p>
+                    <p>Найнято: <output id="boat-dev-count">0</output></p>
                 </div>
-                <button id="buy-senior-dev" aria-label="Найняти Senior розробника">
-                    Ціна: <output id="senior-dev-cost">2500</output> LoC
+                <button id="buy-boat-dev" aria-label="Найняти ракетоносець">
+                    Ціна: <output id="boat-dev-cost">2500</output> LoC
+                </button>
+            </section>
+
+            <section class="upgrade" id="upgrade-plane-dev">
+                <div class="upgrade-info">
+                    <h3>Найняти літак з ракетами</h3>
+                    <p>+50 ракет в секунду</p>
+                    <p>Найнято: <output id="plane-dev-count">0</output></p>
+                </div>
+                <button id="buy-plane-dev" aria-label="Найняти ракетоносець">
+                    Ціна: <output id="plane-dev-cost">5000</output> LoC
                 </button>
             </section>
         </aside>
