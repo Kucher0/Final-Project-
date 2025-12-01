@@ -28,7 +28,6 @@
   --border-radius-sm: 4px;
   --border-radius-md: 5px;
   --border-radius-lg: 8px;
-  /* --border-radius-xl: 15px; - Ця змінна більше не використовується для круглої кнопки */
 }
 
 body {
@@ -90,6 +89,7 @@ body {
   color: var(--text-success);
 }
 
+/* === ЗМІНЕНИЙ БЛОК KEYCAP ДЛЯ КОЛА === */
 .keycap {
   --keycap-size: 180px;
 
@@ -100,8 +100,10 @@ body {
     var(--keycap-gradient-start),
     var(--keycap-gradient-end)
   );
-  /* <<< ЗМІНА ТУТ: Робить кнопку круглою >>> */
-  **border-radius: 50%;**   
+  
+  /* ГАРАНТУЄМО ФОРМУ КОЛА: */
+  **border-radius: 50%;**   **overflow: hidden;** /* Ховаємо потенційний вихід контенту за межі */
+
   border: 2px solid var(--keycap-border);
   box-shadow: 0 8px 0 var(--keycap-border), 0 10px 15px rgba(0, 0, 0, 0.4);
   display: flex;
@@ -118,6 +120,7 @@ body {
   transform: translateY(6px);
   box-shadow: 0 2px 0 var(--keycap-border), 0 5px 5px rgba(0, 0, 0, 0.4);
 }
+/* ==================================== */
 
 #floating-text-container {
   position: absolute;
